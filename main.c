@@ -1,9 +1,12 @@
 #include<stdio.h>
 #include<math.h>
 #define name "dataType"
+#define test 1
+#define PI 3.141592
 
 void sub() {
 }
+
 
 int main() {
 	//1. 키워드
@@ -15,7 +18,7 @@ int main() {
 	int a = 1;
 	sub();
 	//	위 코드에서 식별자는 sub(함수명), a(변수명)이다.
-	//	식별자는 식별자 작성 규칙을 준수해얗 한다. (이거는 쓸 필요가 없을 듯)
+	//	식별자는 식별자 작성 규칙을 준수해야 한다. (이거는 쓸 필요가 없을 듯)
 
 	//1. 상수
 	//	상수는 프로그램이 실행되어 끝날 때까지 변하지 않는 자료이다.
@@ -50,6 +53,43 @@ int main() {
 	//	문자 1개 - ''사이에 문자 넣어서 씀. char를 쓰며 1바이트다.
 	//	아스키코드나 EBCDIC와 같은 컴퓨터 내부의 문자 코드로 바꿔서 쓴다.
 
-	//내일 TODO: 실수에 써져있는 변환기호 사용해보기
+	//11월 19일
+	printf("%6d", 1234);
+	printf("%+-6d", 123);
+	printf("%4f\n\n", 0.00123f);
+	//신기하게도, 4를 초과한 값을 넣어서인지, 일부만 나타나지 않고, 모두가 다 나온다.
+	//즉 실수형을 쓸 꺼면 4.4f 이런 식으로 해야 하는 듯하다.
+	//double
+	printf("%lf\n", 0.12345);
+	printf("%lf\n", 8 * pow(4, 0.5));
+
+	unsigned int b = pow(2, sizeof(int));
+	printf("%ld\n", b);
+	b++;
+	//아마도 여기서 오버플로우 발생할 듯
+	printf("%ld\n", b);
+
+	//이런 데에 전처리문을 넣어도 동작할까
+#define pi = 3.14
+	//print("%lf",pi);
+	//위처럼 하면 pi에 에러가 난다.
+	//float c = pi;
+	//위처럼 해도 에러가 나는 것으로 보아, 아마도 메서드 밖에 써야 할 듯하다
+	
+	printf(name);
+	//printf("%d")를 하지 않았더니 dataType1이라는 결과를 내놓았다.
+	//역시 이건 정상작동한다. 전처리문은 무조건 코드 시작 전에 작성되어야 하는 듯하다
+	printf("%d\n", test);
+	float radius;
+	float area;
+
+	radius = 10.0f;
+	area = radius * radius * PI;
+
+	printf("%f\n", area);
+
+
+	//내일 TODO: 텍스트 박스 만들고, 그 안에 글 적어보기
+
 }
 
